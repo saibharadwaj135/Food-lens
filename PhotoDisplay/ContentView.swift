@@ -10,6 +10,7 @@ struct ContentView: View {
     let model = try? fruitsIdentifier(configuration: MLModelConfiguration())
     @State var nutrients : DataModel = DataModel(items: [item]())
     @State private var navigationPath = NavigationPath()
+    @State var quantity : String = ""
     var body: some View {
         
         NavigationStack(path: $navigationPath){
@@ -34,7 +35,7 @@ struct ContentView: View {
                 
                 HStack {
                     Button(action: viewModel.showCamera) {
-                        Label("Take Photo", systemImage: "camera")
+                        Image(systemName: "camera")
                     }
                     .padding()
                     .background(Color.blue)
@@ -42,7 +43,7 @@ struct ContentView: View {
                     .cornerRadius(10)
                     
                     Button(action: viewModel.showPhotoPicker) {
-                        Label("Choose Photo", systemImage: "photo.on.rectangle")
+                        Image(systemName: "photo.on.rectangle")
                     }
                     .padding()
                     .background(Color.green)
@@ -50,58 +51,41 @@ struct ContentView: View {
                     .cornerRadius(10)
                 }
                 .padding()
-                
-                Button {
-                    
-                    let image = viewModel.image
-                    
-                    let resizedImage = image?.resizeTo(to: CGSize(width: 229, height: 229))
-                    
-                    guard let buffer = resizedImage?.toCVPixelBuffer() else {
-                        return
-                    }
-                    
-                    do{
-                        let prediction = try model?.prediction(image: buffer)
-                        
-                        output = prediction?.target ?? "no output"
-                        //print(prediction?.target ?? "no output")
-                    }
-                    catch{
-                        print(error)
-                    }
-                    
-                } label: {
-                    
-                    ZStack{
-                        
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(width:150,height: 60)
-                            .foregroundStyle(.red)
-                        
-                        HStack{
-                            
-                            Image(systemName: "eye")
-                                .foregroundStyle(.white)
-                            
-                            Text("Predict")
-                                .foregroundStyle(.white)
-                        }
-                        
-                        
-                    }
-                }
-                
-                Text(output)
-                    .font(.largeTitle)
+    
+            HStack{
+                Text("Quantity:")
+                    .font(.title2)
                     .bold()
                 
-                
-                
+                TextField("in grams", text: $quantity)
+                    .textFieldStyle(.roundedBorder)
+                    .background(Color.gray)
+                    .frame(width: 100)
+                    .padding()
+            }
+           
+              
             Button{
+                let image = viewModel.image
+                
+                let resizedImage = image?.resizeTo(to: CGSize(width: 229, height: 229))
+                
+                guard let buffer = resizedImage?.toCVPixelBuffer() else {
+                    return
+                }
+                
+                do{
+                    let prediction = try model?.prediction(image: buffer)
+                    
+                    output = prediction?.target ?? "no output"
+                    //print(prediction?.target ?? "no output")
+                }
+                catch{
+                    print(error)
+                }
                 
                 Task{
-                    nutrients = await service.getData(query: output)
+                    nutrients = await service.getData(query: output, grams: quantity)
                     navigationPath.append("NutrientsView")
                 }
                 

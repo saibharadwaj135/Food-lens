@@ -9,9 +9,9 @@ import Foundation
 
 struct DataService{
     
-    func getData(query: String) async -> DataModel {
+    func getData(query: String,grams: String) async -> DataModel {
         
-        guard let url = URL(string: "https://api.calorieninjas.com/v1/nutrition?query=\(query)") else { fatalError("url not found") }
+        guard let url = URL(string: "https://api.calorieninjas.com/v1/nutrition?query=\(grams)g \(query)") else { fatalError("url not found") }
         
         var request = URLRequest(url: url)
         
@@ -28,7 +28,7 @@ struct DataService{
             do{
                 let result = try decoder.decode(DataModel.self, from: data)
                 
-                //print(result)
+                print(result)
                 
                 return result
             }

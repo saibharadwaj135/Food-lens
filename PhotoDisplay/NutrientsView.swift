@@ -38,144 +38,24 @@ struct NutrientsView: View {
                 ScrollView{
                     
                     
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(height:50)
-                            .foregroundStyle(Color.white)
-                            .shadow(radius: 5)
-                        HStack{
-                            Text("Calories")
-                                .font(.title2)
-                                .bold()
-                            Spacer()
-                            Text("\(String(format: "%.2f", nutrients.items.first?.calories ?? 0.0))g")
-                                .bold()
-                        }
-                        .padding()
-                        
-                    }.padding(.horizontal)
-                    
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(height:50)
-                            .foregroundStyle(Color.white)
-                            .shadow(radius: 5)
-                        HStack{
-                            Text("Fat")
-                                .font(.title2)
-                                .bold()
-                            Spacer()
-                            Text("\(String(format: "%.2f", nutrients.items.first?.fat_total_g ?? 0.0))g")
-                                .bold()
-                        }
-                        .padding()
-                        
-                    }.padding(.horizontal)
-                    
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(height:50)
-                            .foregroundStyle(Color.white)
-                            .shadow(radius: 5)
-                        HStack{
-                            Text("Protein")
-                                .font(.title2)
-                                .bold()
-                            Spacer()
-                            Text("\(String(format: "%.2f", nutrients.items.first?.protein_g ?? 0.0))g")
-                                .bold()
-                        }
-                        .padding()
-                        
-                    }.padding(.horizontal)
+                    nutrientsCard(nutrientname: "Calories", value: nutrients.items.first?.calories)
                     
                     
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(height:50)
-                            .foregroundStyle(Color.white)
-                            .shadow(radius: 5)
-                        HStack{
-                            Text("Potassium")
-                                .font(.title2)
-                                .bold()
-                            Spacer()
-                            Text("\(String(format: "%.2f", nutrients.items.first?.potassium_mg ?? 0.0))mg")
-                                .bold()
-                        }
-                        .padding()
-                        
-                    }.padding(.horizontal)
+                    nutrientsCard(nutrientname: "Fat", value: nutrients.items.first?.fat_total_g)
                     
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(height:50)
-                            .foregroundStyle(Color.white)
-                            .shadow(radius: 5)
-                        HStack{
-                            Text("Sodium")
-                                .font(.title2)
-                                .bold()
-                            Spacer()
-                            Text("\(String(format: "%.2f", nutrients.items.first?.sodium_mg ?? 0.0))mg")
-                                .bold()
-                        }
-                        .padding()
-                        
-                    }.padding(.horizontal)
+                    nutrientsCard(nutrientname: "Protein", value: nutrients.items.first?.protein_g)
                     
+                    nutrientsCard(nutrientname: "Potassium", value: nutrients.items.first?.potassium_mg)
                     
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(height:50)
-                            .foregroundStyle(Color.white)
-                            .shadow(radius: 5)
-                        HStack{
-                            Text("Carbohydrates")
-                                .font(.title2)
-                                .bold()
-                            Spacer()
-                            Text("\(String(format: "%.2f", nutrients.items.first?.carbohydrates_total_g ?? 0.0))g")
-                                .bold()
-                        }
-                        .padding()
-                        
-                    }.padding(.horizontal)
+                    nutrientsCard(nutrientname: "Sodium", value: nutrients.items.first?.sodium_mg)
                     
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(height:50)
-                            .foregroundStyle(Color.white)
-                            .shadow(radius: 5)
-                        HStack{
-                            Text("Fibre")
-                                .font(.title2)
-                                .bold()
-                            Spacer()
-                            Text("\(String(format: "%.2f", nutrients.items.first?.fiber_g ?? 0.0))g")
-                                .bold()
-                        }
-                        .padding()
-                        
-                    }.padding(.horizontal)
+                    nutrientsCard(nutrientname: "Cholestrol", value: nutrients.items.first?.cholestrol_mg)
                     
+                    nutrientsCard(nutrientname: "Carbohydrates", value: nutrients.items.first?.carbohydrates_total_g)
+                  
+                    nutrientsCard(nutrientname: "Fibre", value: nutrients.items.first?.fiber_g)
                     
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(height:50)
-                            .foregroundStyle(Color.white)
-                            .shadow(radius: 5)
-                        HStack{
-                            Text("Sugar")
-                                .font(.title2)
-                                .bold()
-                            Spacer()
-                            Text("\(String(format: "%.2f", nutrients.items.first?.sugar_g ?? 0.0))g")
-                                .bold()
-                        }
-                        .padding()
-                        
-                    }.padding(.horizontal)
+                    nutrientsCard(nutrientname: "Sugar", value: nutrients.items.first?.sugar_g)
 
                 }
                

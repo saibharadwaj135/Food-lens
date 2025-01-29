@@ -26,10 +26,7 @@ The **AI-Powered Fruit Identification App** is an **iOS application** that lever
 4️⃣ Users can **save scanned fruits** for future reference and dietary tracking.  
 
 ### **Setup & Installation**  
-1. Clone this repository:  
-   ```bash
-   git clone https://github.com/your-username/Fruit-Identification-App.git
-   ```  
+1. Clone this repository.
 2. Open the project in **Xcode** and install dependencies.  
 3. Ensure **CoreML, Vision, and API networking** are properly configured.  
 4. Build and run the app on a **physical iOS device** for best results.  

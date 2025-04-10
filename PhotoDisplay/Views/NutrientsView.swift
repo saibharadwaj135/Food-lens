@@ -14,60 +14,66 @@ struct NutrientsView: View {
     
     
     var body: some View {
-        
-        VStack{
-            if let imageData = image{
-                Image(uiImage: imageData).resizable()
-                    .scaledToFit()
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .frame(height: 300)
-            } else {
-                Image(systemName: "photo")
-                    .resizable()
-                    .scaledToFit()
-                    .opacity(0.6)
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .frame(height: 300)
-            }
-          
-            Text(nutrients.items.first?.name ?? "no name")
-                .font(.largeTitle)
-                .bold()
-            
+        ZStack{
+             Image("fruitWall2")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
             VStack{
-                ScrollView{
-                    
-                    
-                    nutrientsCard(nutrientname: "Calories", value: nutrients.items.first?.calories)
-                    
-                    
-                    nutrientsCard(nutrientname: "Fat", value: nutrients.items.first?.fat_total_g)
-                    
-                    nutrientsCard(nutrientname: "Protein", value: nutrients.items.first?.protein_g)
-                    
-                    nutrientsCard(nutrientname: "Potassium", value: nutrients.items.first?.potassium_mg)
-                    
-                    nutrientsCard(nutrientname: "Sodium", value: nutrients.items.first?.sodium_mg)
-                    
-                    nutrientsCard(nutrientname: "Cholestrol", value: nutrients.items.first?.cholestrol_mg)
-                    
-                    nutrientsCard(nutrientname: "Carbohydrates", value: nutrients.items.first?.carbohydrates_total_g)
-                  
-                    nutrientsCard(nutrientname: "Fibre", value: nutrients.items.first?.fiber_g)
-                    
-                    nutrientsCard(nutrientname: "Sugar", value: nutrients.items.first?.sugar_g)
-
+                if let imageData = image{
+                    Image(uiImage: imageData).resizable()
+                        .scaledToFit()
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .frame(height: 300)
+                } else {
+                    Image(systemName: "photo")
+                        .resizable()
+                        .scaledToFit()
+                        .opacity(0.6)
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .frame(height: 300)
                 }
+              
+                Text(nutrients.items.first?.name ?? "no name")
+                    .font(.largeTitle)
+                    .bold()
+                
+                VStack{
+                    ScrollView{
+                        
+                        
+                        nutrientsCard(nutrientname: "Calories", value: nutrients.items.first?.calories)
+                        
+                        
+                        nutrientsCard(nutrientname: "Fat", value: nutrients.items.first?.fat_total_g)
+                        
+                        nutrientsCard(nutrientname: "Protein", value: nutrients.items.first?.protein_g)
+                        
+                        nutrientsCard(nutrientname: "Potassium", value: nutrients.items.first?.potassium_mg)
+                        
+                        nutrientsCard(nutrientname: "Sodium", value: nutrients.items.first?.sodium_mg)
+                        
+                        nutrientsCard(nutrientname: "Cholestrol", value: nutrients.items.first?.cholestrol_mg)
+                        
+                        nutrientsCard(nutrientname: "Carbohydrates", value: nutrients.items.first?.carbohydrates_total_g)
+                      
+                        nutrientsCard(nutrientname: "Fibre", value: nutrients.items.first?.fiber_g)
+                        
+                        nutrientsCard(nutrientname: "Sugar", value: nutrients.items.first?.sugar_g)
+
+                    }
+                   
+                }
+                .padding()
+                
                
             }
-            
-           
         }
+        
         
      
         
 
-        Spacer()
     }
 }
 

@@ -23,7 +23,7 @@ The **AI-Powered Fruit Identification App** is an **iOS application** that lever
 1️⃣ Open the app and scan a fruit using the **camera** or select an image from the **photo library**.  
 2️⃣ The image is analyzed using the **CoreML fruit classification model**.  
 3️⃣ The app queries **CalorieNinja API** to fetch **nutritional data**, including calories, macronutrients, and vitamins.  
-4️⃣ Users can **save scanned fruits** for future reference and dietary tracking.  
+
 
 ### **Setup & Installation**  
 1. Clone this repository.
